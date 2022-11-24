@@ -5,8 +5,17 @@
   justify-items: center;
 }
 
-.ItemList__Item {
-  border: 1px black solid;
-  width: 12rem;
-  height: 12rem;
+.ItemList__button {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  padding: 20px;
+  font-family: "pokeInGame";
+  text-decoration: none;
+  color: white;
+  background: var(--color-yellow);
+  box-shadow: inset -4px -4px 0px 0px #e59400;
+  width: 50%;
 }

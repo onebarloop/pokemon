@@ -1,0 +1,19 @@
+.ShoppingItem__Item {
+  border: 1px black solid;
+  width: 12rem;
+  height: 12rem;
+  background-color: var(--color-yellow);
+  border: 10px solid var(--color-blue);
+  text-align: center;
+  align-content: center;
+}
+
+.ShoppingItem__image {
+  width: 5rem;
+  image-rendering: pixelated;
+}
+
+.ShoppingItem__list {
+  list-style: none;
+  font-family: pokeInGame;
+}

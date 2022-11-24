@@ -1,0 +1,12 @@
+.ItemList__ItemList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  justify-items: center;
+}
+
+.ItemList__Item {
+  border: 1px black solid;
+  width: 12rem;
+  height: 12rem;
+}

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./ShoppingItem.css";
 import avatar from "../../assets/images/avatar.png";
 
-export default function ShoppingItem({ url }) {
+export default function ShoppingItem({ url, onBuyItem }) {
   const [details, setDetails] = useState({
     image: avatar,
     cost: "?",
@@ -37,8 +37,17 @@ export default function ShoppingItem({ url }) {
         />
         <ul className="ShoppingItem__list">
           <li>{details.name}</li>
-          <li>cost: {details.cost} ¥</li>
+          <li>cost: {details.cost}¥</li>
         </ul>
+        <button
+          type="button"
+          onClick={() => {
+            onBuyItem(details);
+          }}
+          className="ShoppingItem__button"
+        >
+          Buy Item
+        </button>
       </article>
     </>
   );

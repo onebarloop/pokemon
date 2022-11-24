@@ -3,6 +3,7 @@
   --color-yellow: #ffcc00;
   --color-red: #fb1b1b;
   --color-grey: #dfdfdf;
+  --color-green: #4dad5b;
 }
 
 * {
@@ -13,7 +14,7 @@
 
 #root {
   display: grid;
-  grid-template-rows: 3rem auto 3rem;
+  grid-template-rows: 4rem auto 3rem;
   height: 100vh;
 }
 

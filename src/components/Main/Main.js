@@ -1,5 +1,9 @@
-import ShoppingItem from "../ShoppingItem/ShoppingItem";
+import ItemList from "../ItemList/ItemList";
 
 export default function Main() {
-  return <ShoppingItem />;
+  return (
+    <main>
+      <ItemList />
+    </main>
+  );
 }

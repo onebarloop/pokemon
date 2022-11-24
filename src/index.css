@@ -2,6 +2,7 @@
   --color-blue: #0075be;
   --color-yellow: #ffcc00;
   --color-red: #fb1b1b;
+  --color-grey: #dfdfdf;
 }
 
 * {
@@ -18,6 +19,7 @@
 
 main {
   overflow-y: scroll;
+  background-color: var(--color-grey);
 }
 
 body {
@@ -34,4 +36,9 @@ body {
 @font-face {
   font-family: pokeSolid;
   src: url("./assets/fonts/Pokemon_Solid.ttf");
+}
+
+@font-face {
+  font-family: pokeInGame;
+  src: url("./assets/fonts/Pokemon_InGame.ttf");
 }

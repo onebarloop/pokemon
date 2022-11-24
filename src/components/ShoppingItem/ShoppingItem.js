@@ -1,31 +1,45 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import "./ShoppingItem.css";
+import avatar from "../../assets/images/avatar.png";
 
-export default function ShoppingItem() {
-  const URL = "https://pokeapi.co/api/v2/item/";
-  const [items, setItems] = useState([]);
+export default function ShoppingItem({ url }) {
+  const [details, setDetails] = useState({
+    image: avatar,
+    cost: "?",
+    name: "",
+  });
 
   useEffect(() => {
-    async function catchItem() {
+    async function fetchItem() {
+      // setDetails({ image: "../assets/images/avatar.png" });
       try {
-        const response = await fetch(URL);
+        const response = await fetch(url);
         const data = await response.json();
-        setItems(data.results);
-        console.log(data.results);
+        setDetails({
+          image: data.sprites.default,
+          cost: data.cost,
+          name: data.name,
+        });
       } catch (error) {
         console.log(error);
       }
     }
-    catchItem();
-  }, []);
+    fetchItem();
+  }, [url]);
 
   return (
-    <section className="ShoppingItem__ItemList">
-      {items.map((item) => (
-        <article className="ShoppingItem__Item" key={item.name}>
-          {item.name}
-        </article>
-      ))}
-    </section>
+    <>
+      <article className="ShoppingItem__Item">
+        <img
+          className="ShoppingItem__image"
+          src={details.image}
+          alt="ShoppingItemImage"
+        />
+        <ul className="ShoppingItem__list">
+          <li>{details.name}</li>
+          <li>cost: {details.cost} ¥</li>
+        </ul>
+      </article>
+    </>
   );
 }

@@ -1,0 +1,8 @@
+.header {
+  font-family: pokeSolid;
+  color: var(--color-yellow);
+  background-color: var(--color-red);
+  -webkit-text-stroke: 1px var(--color-blue);
+  letter-spacing: 0.22rem;
+  text-align: center;
+}

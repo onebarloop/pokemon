@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ShoppingItem from "../ShoppingItem/ShoppingItem";
-import "./ItemList.css";
+import styled from "styled-components";
 
 export default function ItemList({ onBuyItem }) {
   const [URL, setURL] = useState("https://pokeapi.co/api/v2/item/");
@@ -30,25 +30,41 @@ export default function ItemList({ onBuyItem }) {
 
   return (
     <>
-      <section className="ItemList__ItemList">
+      <StyledItemList>
         {items?.results.map((item) => (
           <ShoppingItem key={item.name} url={item.url} onBuyItem={onBuyItem} />
         ))}
-      </section>
-      <button
-        className="ItemList__button"
-        type="button"
-        onClick={handlePreviousPage}
-      >
+      </StyledItemList>
+      <StyledPageButton type="button" onClick={handlePreviousPage} prev>
         previous
-      </button>
-      <button
-        className="ItemList__button"
-        type="button"
-        onClick={handleNextPage}
-      >
+      </StyledPageButton>
+      <StyledPageButton type="button" onClick={handleNextPage}>
         next
-      </button>
+      </StyledPageButton>
     </>
   );
 }
+
+const StyledItemList = styled.section`
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  justify-items: center;
+`;
+
+const StyledPageButton = styled.button`
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  padding: 20px;
+  font-family: "pokeInGame";
+  text-decoration: none;
+  color: white;
+  background: ${({ prev }) =>
+    prev ? "var(--color-red)" : "var(--color-yellow)"};
+  box-shadow: inset -4px -4px 0px 0px #e59400;
+  width: 50%;
+`;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ShoppingItem from "../ShoppingItem/ShoppingItem";
 import "./ItemList.css";
 
-export default function ItemList() {
+export default function ItemList({ onBuyItem }) {
   const [URL, setURL] = useState("https://pokeapi.co/api/v2/item/");
   const [items, setItems] = useState();
 
@@ -32,7 +32,7 @@ export default function ItemList() {
     <>
       <section className="ItemList__ItemList">
         {items?.results.map((item) => (
-          <ShoppingItem key={item.name} url={item.url} />
+          <ShoppingItem key={item.name} url={item.url} onBuyItem={onBuyItem} />
         ))}
       </section>
       <button

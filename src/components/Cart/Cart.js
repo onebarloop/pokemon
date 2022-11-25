@@ -1,5 +1,3 @@
-import "./Cart.css";
-
 export default function Cart({ shoppingCart }) {
   return (
     <>

@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function Main() {
   const [shoppingCart, setShoppingCart] = useState([]);
 
-  console.log(shoppingCart);
+  console.log(shoppingCart.length);
 
   function handleBuyItem(newItem) {
     setShoppingCart([newItem, ...shoppingCart]);

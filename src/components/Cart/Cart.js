@@ -26,8 +26,10 @@ export default function Cart({ shoppingCart }) {
           <p style={{ gridArea: "b" }}> {shoppingCart.length}</p>
           <p style={{ gridArea: "c" }}>total:</p>
           <p style={{ gridArea: "d" }}>
-            {" "}
-            ¥{shoppingCart.map((item) => item.cost).reduce((a, b) => a + b)}
+            ¥
+            {shoppingCart.length === 0
+              ? 0
+              : shoppingCart.map((item) => item.cost).reduce((a, b) => a + b)}
           </p>
           <StyledCartBuyButton style={{ gridArea: "e" }} type="button">
             Buy Now

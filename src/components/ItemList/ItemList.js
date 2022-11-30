@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ShoppingItem from "../ShoppingItem/ShoppingItem";
 import styled, { css } from "styled-components";
+import useFetch from "../../lib/fetch";
 
 export default function ItemList({ onBuyItem }) {
   const [URL, setURL] = useState("https://pokeapi.co/api/v2/item/");
-  const [items, setItems] = useState();
+
+  const items = useFetch(URL);
 
   function handleNextPage() {
     setURL(items.next);
@@ -13,20 +15,6 @@ export default function ItemList({ onBuyItem }) {
   function handlePreviousPage() {
     setURL(items.previous);
   }
-
-  useEffect(() => {
-    async function catchItem() {
-      try {
-        const response = await fetch(URL);
-        const data = await response.json();
-        setItems(data);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    catchItem();
-  }, [URL]);
 
   return (
     <>

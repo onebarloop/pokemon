@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ShoppingItem from "../ShoppingItem/ShoppingItem";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export default function ItemList({ onBuyItem }) {
   const [URL, setURL] = useState("https://pokeapi.co/api/v2/item/");
@@ -63,8 +63,13 @@ const StyledPageButton = styled.button`
   font-family: "pokeInGame";
   text-decoration: none;
   color: white;
-  background: ${({ prev }) =>
-    prev ? "var(--color-red)" : "var(--color-yellow)"};
+  background: var(--color-yellow);
   box-shadow: inset -4px -4px 0px 0px #e59400;
   width: 50%;
+  ${({ prev }) =>
+    prev &&
+    css`
+      background: var(--color-red);
+      box-shadow: inset -4px -4px 0px 0px #a60a0a;
+    `}
 `;

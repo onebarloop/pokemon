@@ -1,31 +1,45 @@
-import { useState, useEffect } from "react";
 import avatar from "../../assets/images/avatar.png";
 import styled from "styled-components";
+import useFetch from "../../lib/fetch";
 
 export default function ShoppingItem({ url, onBuyItem }) {
-  const [details, setDetails] = useState({
-    image: avatar,
-    cost: "?",
-    name: "",
-  });
+  const data = useFetch(url);
 
-  useEffect(() => {
-    async function fetchItem() {
-      // setDetails({ image: "../assets/images/avatar.png" });
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setDetails({
-          image: data.sprites.default,
-          cost: data.cost,
-          name: data.name,
-        });
-      } catch (error) {
-        console.log(error);
+  const details = data
+    ? {
+        image: data.sprites.default,
+        cost: data.cost,
+        name: data.name,
       }
-    }
-    fetchItem();
-  }, [url]);
+    : { image: avatar, cost: "?", name: "" };
+
+  // setDetails({
+  //   image: data.sprites.default,
+  //   cost: data.cost,
+  //   name: data.name,
+  // });
+
+  //console.log(data);
+
+  //setDetails({ image: data.sprites.default, cost: data.cost, name: data.name });
+
+  // useEffect(() => {
+  //   async function fetchItem() {
+  //
+  //     try {
+  //       const response = await fetch(url);
+  //       const data = await response.json();
+  //       setDetails({
+  //         image: data.sprites.default,
+  //         cost: data.cost,
+  //         name: data.name,
+  //       });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   fetchItem();
+  // }, [url]);
 
   return (
     <>

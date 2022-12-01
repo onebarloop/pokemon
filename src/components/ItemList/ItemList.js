@@ -1,20 +1,13 @@
-import { useState } from "react";
 import ShoppingItem from "../ShoppingItem/ShoppingItem";
 import styled, { css } from "styled-components";
-import useFetch from "../../lib/fetch";
+
+import useItems from "../../lib/items";
 
 export default function ItemList({ onBuyItem }) {
-  const [URL, setURL] = useState("https://pokeapi.co/api/v2/item/");
-
-  const items = useFetch(URL);
-
-  function handleNextPage() {
-    setURL(items.next);
-  }
-
-  function handlePreviousPage() {
-    setURL(items.previous);
-  }
+  const { handleNextPage, handlePreviousPage, items } = useItems(
+    "https://pokeapi.co/api/v2/item/"
+  );
+  //NEU
 
   return (
     <>

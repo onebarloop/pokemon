@@ -42,6 +42,7 @@ export default function Cart({ shoppingCart }) {
 
 const StyledCart = styled.section`
   position: absolute;
+  right: 0;
   background-image: url(${pokeBackground});
   background-size: cover;
   padding: 1rem;

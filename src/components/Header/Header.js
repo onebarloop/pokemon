@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
-export default function Header() {
+export default function Header({ onShowCart }) {
   return (
     <Headline>
       <h1>WeLCoMe To PoKé MaRT!</h1>
+      <button type="button" onClick={onShowCart}>
+        poke button
+      </button>
     </Headline>
   );
 }

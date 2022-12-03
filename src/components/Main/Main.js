@@ -3,7 +3,7 @@ import Cart from "../Cart/Cart";
 import { useState } from "react";
 //import avatar from "../../assets/images/avatar.png";
 
-export default function Main() {
+export default function Main({ isShowingCart }) {
   const [shoppingCart, setShoppingCart] = useState([]);
 
   console.log(shoppingCart.length);
@@ -14,7 +14,7 @@ export default function Main() {
 
   return (
     <main>
-      <Cart shoppingCart={shoppingCart} />
+      {isShowingCart && <Cart shoppingCart={shoppingCart} />}
       <ItemList onBuyItem={handleBuyItem} />
     </main>
   );

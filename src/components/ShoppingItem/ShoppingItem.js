@@ -1,6 +1,7 @@
 import avatar from "../../assets/images/avatar.png";
 import styled from "styled-components";
 import useFetch from "../../lib/fetch";
+import { nanoid } from "nanoid";
 
 export default function ShoppingItem({ url, onBuyItem }) {
   const data = useFetch(url);
@@ -10,36 +11,10 @@ export default function ShoppingItem({ url, onBuyItem }) {
         image: data.sprites.default,
         cost: data.cost,
         name: data.name,
+        quantity: 1,
+        id: nanoid(),
       }
     : { image: avatar, cost: "?", name: "" };
-
-  // setDetails({
-  //   image: data.sprites.default,
-  //   cost: data.cost,
-  //   name: data.name,
-  // });
-
-  //console.log(data);
-
-  //setDetails({ image: data.sprites.default, cost: data.cost, name: data.name });
-
-  // useEffect(() => {
-  //   async function fetchItem() {
-  //
-  //     try {
-  //       const response = await fetch(url);
-  //       const data = await response.json();
-  //       setDetails({
-  //         image: data.sprites.default,
-  //         cost: data.cost,
-  //         name: data.name,
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   fetchItem();
-  // }, [url]);
 
   return (
     <>

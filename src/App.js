@@ -16,6 +16,31 @@ function App() {
     setShoppingCart([newItem, ...shoppingCart]);
   }
 
+  function handleAddItem(id) {
+    setShoppingCart(
+      shoppingCart.map((item) => {
+        if (item.id === id) return { ...item, quantity: item.quantity + 1 };
+        return item;
+      })
+    );
+  }
+
+  function handleRemoveItem(id) {
+    setShoppingCart(
+      shoppingCart.map((item) => {
+        // TODO: Remove Item from Cart if Quantity is 0
+
+        // if (item.id === id && item.quantity === 1) {
+        //   setShoppingCart(shoppingCart.filter((item) => item.id !== id));
+        // }
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+        return item;
+      })
+    );
+  }
+
   return (
     <>
       <Header onShowCart={handleShowCart} shoppingCart={shoppingCart} />
@@ -23,6 +48,8 @@ function App() {
         isShowingCart={isShowingCart}
         onBuyItem={handleBuyItem}
         shoppingCart={shoppingCart}
+        onAddItem={handleAddItem}
+        onRemoveItem={handleRemoveItem}
       />
       <Footer />
     </>

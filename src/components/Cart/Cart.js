@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import pokeBackground from "../../assets/images/background.jpg";
 
-export default function Cart({ shoppingCart }) {
+export default function Cart({ shoppingCart, onAddItem, onRemoveItem }) {
   return (
     <>
       <StyledCart>
@@ -9,12 +9,23 @@ export default function Cart({ shoppingCart }) {
           {shoppingCart?.map((item) => (
             <StyledCartItem key={item.name}>
               <StyledCartItemImage src={item.image} alt="pokeimage" />
-              <StyledCartItemName>{item.name}</StyledCartItemName>
-              <span>¥ {item.cost}</span>
+              <StyledCartItemName>
+                {item.name} x {item.quantity}
+              </StyledCartItemName>
+              <span>¥ {item.cost * item.quantity}</span>
 
               <span>
-                <StyledCartButton type="button">+</StyledCartButton>
-                <StyledCartButton type="button" prev>
+                <StyledCartButton
+                  type="button"
+                  onClick={() => onAddItem(item.id)}
+                >
+                  +
+                </StyledCartButton>
+                <StyledCartButton
+                  type="button"
+                  prev
+                  onClick={() => onRemoveItem(item.id)}
+                >
                   -
                 </StyledCartButton>
               </span>
@@ -23,13 +34,21 @@ export default function Cart({ shoppingCart }) {
         </StyledList>
         <StyledCartSummary>
           <p style={{ gridArea: "a" }}>Items: </p>
-          <p style={{ gridArea: "b" }}> {shoppingCart.length}</p>
+          <p style={{ gridArea: "b" }}>
+            {shoppingCart.length === 0
+              ? 0
+              : shoppingCart
+                  .map((item) => item.quantity)
+                  .reduce((a, b) => a + b)}
+          </p>
           <p style={{ gridArea: "c" }}>total:</p>
           <p style={{ gridArea: "d" }}>
             ¥
             {shoppingCart.length === 0
               ? 0
-              : shoppingCart.map((item) => item.cost).reduce((a, b) => a + b)}
+              : shoppingCart
+                  .map((item) => item.cost * item.quantity)
+                  .reduce((a, b) => a + b)}
           </p>
           <StyledCartBuyButton style={{ gridArea: "e" }} type="button">
             Buy Now

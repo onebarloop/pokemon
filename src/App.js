@@ -19,9 +19,3 @@ function App() {
 }
 
 export default App;
-
-//button im header eingefügt
-//cart rechts aligned (styledCart)
-// removed console log in main.js
-// add conditinal rendering for Cart in Main.js
-// add useState and handleShowCart function in App.ja

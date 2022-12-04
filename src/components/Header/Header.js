@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import pokeballCart from "../../assets/images/pokeballCart.png";
 
 export default function Header({ onShowCart }) {
   return (
     <Headline>
       <h1>WeLCoMe To PoKé MaRT!</h1>
-      <button type="button" onClick={onShowCart}>
-        poke button
-      </button>
+
+      <StyledPokeBall
+        src={pokeballCart}
+        alt="pokeballIcon"
+        onClick={onShowCart}
+      />
     </Headline>
   );
 }
@@ -25,4 +29,9 @@ const Headline = styled.header`
   h1 {
     font-size: 3rem;
   }
+`;
+
+const StyledPokeBall = styled.img`
+  width: 30px;
+  margin: 0 2rem;
 `;

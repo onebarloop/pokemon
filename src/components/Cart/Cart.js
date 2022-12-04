@@ -61,6 +61,7 @@ export default function Cart({ shoppingCart, onAddItem, onRemoveItem }) {
 
 const StyledCart = styled.section`
   position: absolute;
+  right: 0;
   background-image: url(${pokeBackground});
   background-size: cover;
   padding: 1rem;

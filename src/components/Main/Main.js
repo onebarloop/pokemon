@@ -1,21 +1,12 @@
 import ItemList from "../ItemList/ItemList";
 import Cart from "../Cart/Cart";
-import { useState } from "react";
 //import avatar from "../../assets/images/avatar.png";
 
-export default function Main({ isShowingCart }) {
-  const [shoppingCart, setShoppingCart] = useState([]);
-
-  console.log(shoppingCart.length);
-
-  function handleBuyItem(newItem) {
-    setShoppingCart([newItem, ...shoppingCart]);
-  }
-
+export default function Main({ shoppingCart, onBuyItem, isShowingCart }) {
   return (
     <main>
       {isShowingCart && <Cart shoppingCart={shoppingCart} />}
-      <ItemList onBuyItem={handleBuyItem} />
+      <ItemList onBuyItem={onBuyItem} />
     </main>
   );
 }

@@ -6,13 +6,24 @@ import { useState } from "react";
 
 function App() {
   const [isShowingCart, setIsShowingCart] = useState(false);
+  const [shoppingCart, setShoppingCart] = useState([]);
+
   function handleShowCart() {
     setIsShowingCart(!isShowingCart);
   }
+
+  function handleBuyItem(newItem) {
+    setShoppingCart([newItem, ...shoppingCart]);
+  }
+
   return (
     <>
-      <Header onShowCart={handleShowCart} />
-      <Main isShowingCart={isShowingCart} />
+      <Header onShowCart={handleShowCart} shoppingCart={shoppingCart} />
+      <Main
+        isShowingCart={isShowingCart}
+        onBuyItem={handleBuyItem}
+        shoppingCart={shoppingCart}
+      />
       <Footer />
     </>
   );

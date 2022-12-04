@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import pokeballCart from "../../assets/images/pokeballCart.png";
 
-export default function Header({ onShowCart }) {
+export default function Header({ onShowCart, shoppingCart }) {
   return (
     <Headline>
       <h1>WeLCoMe To PoKé MaRT!</h1>
@@ -11,6 +11,7 @@ export default function Header({ onShowCart }) {
         alt="pokeballIcon"
         onClick={onShowCart}
       />
+      <StyledCounter>{shoppingCart.length}</StyledCounter>
     </Headline>
   );
 }
@@ -33,5 +34,16 @@ const Headline = styled.header`
 
 const StyledPokeBall = styled.img`
   width: 30px;
-  margin: 0 2rem;
+  margin-left: 1rem;
+`;
+
+const StyledCounter = styled.span`
+  position: relative;
+  -webkit-text-stroke: 1px white;
+  color: black;
+  font-family: pokeInGame;
+  left: -0.5rem;
+  top: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
 `;

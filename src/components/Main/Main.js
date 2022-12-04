@@ -6,7 +6,25 @@ import { useState } from "react";
 export default function Main() {
   const [shoppingCart, setShoppingCart] = useState([]);
 
-  console.log(shoppingCart.length);
+  function handleAddItem(id) {
+    setShoppingCart(
+      shoppingCart.map((item) => {
+        if (item.id === id) return { ...item, quantity: item.quantity + 1 };
+        return item;
+      })
+    );
+  }
+
+  function handleRemoveItem(id) {
+    setShoppingCart(
+      shoppingCart.map((item) => {
+        if (item.id === id) return { ...item, quantity: item.quantity - 1 };
+        return item;
+      })
+    );
+  }
+
+  console.table(shoppingCart);
 
   function handleBuyItem(newItem) {
     setShoppingCart([newItem, ...shoppingCart]);
@@ -14,7 +32,11 @@ export default function Main() {
 
   return (
     <main>
-      <Cart shoppingCart={shoppingCart} />
+      <Cart
+        shoppingCart={shoppingCart}
+        onAddItem={handleAddItem}
+        onRemoveItem={handleRemoveItem}
+      />
       <ItemList onBuyItem={handleBuyItem} />
     </main>
   );

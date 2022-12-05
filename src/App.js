@@ -26,19 +26,26 @@ function App() {
   }
 
   function handleRemoveItem(id) {
-    setShoppingCart(
-      shoppingCart.map((item) => {
-        // TODO: Remove Item from Cart if Quantity is 0
+    shoppingCart.map((item) => {
+      if (item.id === id && item.quantity === 1) {
+        setShoppingCart(shoppingCart.filter((item) => item.id !== id));
+      }
+      return null;
+    });
 
-        // if (item.id === id && item.quantity === 1) {
-        //   setShoppingCart(shoppingCart.filter((item) => item.id !== id));
-        // }
-        if (item.id === id) {
-          return { ...item, quantity: item.quantity - 1 };
-        }
-        return item;
-      })
-    );
+    shoppingCart.map((item) => {
+      if (item.id === id && item.quantity !== 1) {
+        setShoppingCart(
+          shoppingCart.map((item) => {
+            if (item.id === id) {
+              return { ...item, quantity: item.quantity - 1 };
+            }
+            return item;
+          })
+        );
+      }
+      return null;
+    });
   }
 
   return (
